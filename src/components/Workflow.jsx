@@ -71,7 +71,9 @@ function Workflow() {
         >
           My design process follows a structured
           step-by-step approach from understanding
-          a problem to building and refining a solution.
+          a problem to building and refining a solution. 
+          I have applied this process to develop a variety of websites and apps, including:
+          e-commerce, marketplaces, and crime monitoring. 
         </p>
 
         <div className="relative">
