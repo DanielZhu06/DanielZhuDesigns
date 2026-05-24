@@ -16,7 +16,22 @@ function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0d0d0de6] backdrop-blur-md border-b border-white/10">
-      <div className="max-w-[1600px] mx-auto px-[7%] py-6 grid grid-cols-3 items-center">
+      <div
+        className="
+          max-w-[1600px]
+          mx-auto
+          px-6
+          py-4
+
+          flex
+          flex-col
+          lg:grid
+          lg:grid-cols-3
+
+          items-center
+          gap-4
+        "
+      >
 
         {/* LEFT */}
         <div className="text-yellow-400 text-4xl font-bold animate-[logoDrop_0.7s_ease-out_forwards]">
