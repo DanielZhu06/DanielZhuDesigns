@@ -1,5 +1,5 @@
 import { FaLinkedin, FaGithub } from "react-icons/fa";
-import me from "../assets/me.jpg";
+import picture from "../assets/picture.jpg";
 
 function Hero() {
   return (
@@ -71,7 +71,7 @@ function Hero() {
         {/* RIGHT */}
         <div className="slide-in-right">
           <img
-            src={me}
+            src={picture}
             alt="Daniel Zhu"
             className="
               w-full max-w-[500px]
