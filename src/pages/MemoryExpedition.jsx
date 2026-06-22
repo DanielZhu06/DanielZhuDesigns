@@ -96,7 +96,6 @@ function MemoryExpedition() {
     setScreen("results");
   }
 
-
   return (
 
     <div
@@ -134,72 +133,41 @@ function MemoryExpedition() {
       />
 
       <div className="relative z-10">
-
         {
           screen === "setup" && (
-
             <Setup
-
               settings={settings}
-
               setSettings={setSettings}
-
               start={() => setScreen("game")}
-
             />
-
           )
         }
-
-
 
         {
           screen === "game" && (
-
             <GameBoard
-
               settings={settings}
-
               finish={handleFinish}
-
             />
-
           )
         }
-
-
 
         {
           screen === "results" && (
-
             <Results
-
               round={lastRound}
-
               streak={streak}
-
               sessionScore={sessionScore}
-
               highScore={highScore}
-
               bestStreak={bestStreak}
-
               isNewHighScore={isNewHighScore}
-
               restart={() => setScreen("setup")}
-
             />
-
           )
         }
-
       </div>
-
-
     </div>
-
   );
 }
-
 
 export default MemoryExpedition;

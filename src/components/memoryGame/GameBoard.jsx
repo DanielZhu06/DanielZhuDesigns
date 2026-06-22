@@ -36,7 +36,6 @@ function generateRandomPath(size, length) {
   return path;
 }
 
-
 function GameBoard({
   settings,
   finish
@@ -65,15 +64,10 @@ function GameBoard({
 
   };
 
-
-
   const config =
     difficulties[
       settings.difficulty
     ];
-
-
-
 
   const [path] = useState(
     generateRandomPath(
@@ -82,87 +76,39 @@ function GameBoard({
     )
     );
 
-
-
   const [showIndex, setShowIndex] =
     useState(0);
-
-
 
   const [memorizing, setMemorizing] =
     useState(true);
 
-
-
   const [selected, setSelected] =
     useState([]);
-
-
-
-
-
-
 
   // reveal path one square at a time
 
   useEffect(() => {
 
-
     let counter = 0;
 
-
-
     const timer = setInterval(() => {
-
-
       counter++;
-
-
-
       if(counter >= path.length) {
-
-
         clearInterval(timer);
-
-
-
         setTimeout(()=>{
-
-
           setMemorizing(false);
-
-
           setShowIndex(-1);
-
-
-
         },800);
-
-
-
         return;
-
       }
-
-
-
       setShowIndex(counter);
-
-
 
     },800);
 
-
-
     return () => {
-
       clearInterval(timer);
-
     };
-
-
   }, [path]);
-
 
   function chooseTile(index) {
     if (memorizing) {
@@ -230,10 +176,6 @@ function GameBoard({
     return theme.tileIdle;
     }
 
-
-
-
-
   return (
 
     <div
@@ -248,8 +190,6 @@ function GameBoard({
         ${theme.accentGlow}
       `}
     >
-
-
 
     <h1
         className={`
@@ -268,74 +208,35 @@ function GameBoard({
         {theme.label}
     </h1>
 
-
-
-
-
       <p className="mt-4">
-
-
         {
           memorizing
-
           ?
-
           "Watch the route appear!"
-
           :
-
           "Repeat the route 🚩 → 🏁"
-
         }
-
-
       </p>
 
-
-
-
-
       <div
-
         className="grid gap-3 mt-8"
-
         style={{
-
           gridTemplateColumns:
           `repeat(${config.size},60px)`
-
         }}
-
       >
-
-
-
       {
-
         Array.from({
-
           length:
           config.size *
           config.size
-
         })
-
         .map((_,index)=>(
-
-
-
           <button
-
-
             key={index}
-
-
             onClick={() =>
               chooseTile(index)
             }
-
-
-
             className={`
               h-[60px]
               rounded-xl
@@ -343,21 +244,12 @@ function GameBoard({
               hover:scale-110
               ${tileStyle(index)}
             `}
-
-
           >
-
-
-
             {
               index === path[0]
               &&
               "🚩"
             }
-
-
-
-
             {
               index ===
               path[path.length-1]
@@ -365,22 +257,10 @@ function GameBoard({
               "🏁"
             }
 
-
-
           </button>
-
-
-
         ))
-
       }
-
-
-
       </div>
-
-
-
 
       <p className="mt-5 text-sm">
 
@@ -390,13 +270,8 @@ function GameBoard({
 
       </p>
 
-
-
     </div>
-
   );
-
 }
-
 
 export default GameBoard;
