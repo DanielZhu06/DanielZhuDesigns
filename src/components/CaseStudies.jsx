@@ -19,10 +19,11 @@ const projects = [
   },
 
   {
-    title: "E-Commerce Site",
-    text: "Design 3: an e-commerce site.",
+    title: "Persona",
+    text: "A clothing e-commerce prototype with faceted search and a full checkout flow.",
     image:
       "https://img.freepik.com/free-vector/flat-sale-landing-page-template-with-photo_23-2149028522.jpg",
+    route: "/persona",
   },
 
   {

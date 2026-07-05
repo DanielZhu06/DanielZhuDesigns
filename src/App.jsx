@@ -9,6 +9,7 @@ import ComingSoon from "./components/ComingSoon";
 
 import AutoGlow from "./pages/AutoGlow";
 import MemoryExpedition from "./pages/MemoryExpedition";
+import PersonaStore from "./pages/PersonaStore";
 
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -51,6 +52,11 @@ function App() {
         <Route
           path="/memory-expedition"
           element={<MemoryExpedition />}
+        />
+
+        <Route
+          path="/persona"
+          element={<PersonaStore />}
         />
 
       </Routes>
