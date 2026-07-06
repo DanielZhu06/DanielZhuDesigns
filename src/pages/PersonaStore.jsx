@@ -192,7 +192,6 @@ export default function PersonaStore() {
   const availableSizes = useMemo(() => [...new Set(categoryProducts.flatMap(p => p.sizes))], [categoryProducts]);
   const availableColors = useMemo(() => [...new Set(categoryProducts.flatMap(p => p.colors))], [categoryProducts]);
   const availableFits = useMemo(() => [...new Set(categoryProducts.map(p => p.fit))], [categoryProducts]);
-
   const countFor = (key, val) => categoryProducts.filter(p => key === "sizes" ? p.sizes.includes(val) : key === "colors" ? p.colors.includes(val) : p.fit === val).length;
 
   const filtered = useMemo(() => {
@@ -220,7 +219,16 @@ export default function PersonaStore() {
       return true;
     });
 
-    return list.sort((a, b) => (b.pop ?? 0) - (a.pop ?? 0));
+    if (filters.sort === "price-asc") {
+      return [...list].sort((a, b) => (a.salePrice ?? a.price) - (b.salePrice ?? b.price));
+    }
+    if (filters.sort === "price-desc") {
+      return [...list].sort((a, b) => (b.salePrice ?? b.price) - (a.salePrice ?? a.price));
+    }
+    if (filters.sort === "newest") {
+      return [...list].sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+    }
+    return [...list].sort((a, b) => (b.pop ?? 0) - (a.pop ?? 0));
   }, [categoryProducts, filters, submittedQuery]);
 
   const toggleArr = (key, val) => setFilters(f => ({ ...f, [key]: f[key].includes(val) ? f[key].filter(v => v !== val) : [...f[key], val] }));
@@ -255,7 +263,8 @@ export default function PersonaStore() {
 
   const styleBlock = (
     <style>{`
-      * { font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+      * { font-family: 'Space Grotesk', -apple-system, Helvetica, Arial, sans-serif; }
       .cat-tile { position: relative; overflow: hidden; }
       .cat-tile:hover .cat-label { text-decoration: underline; }
     `}</style>
@@ -287,9 +296,6 @@ export default function PersonaStore() {
                 {c}
               </button>
             ))}
-            <button onClick={() => { setPage("shop"); setFilters(f => ({ ...f, saleOnly: true, category: "All", sizes: [], colors: [], fits: [] })); }} style={{ color: C.red }} className="uppercase">
-              Sale
-            </button>
           </nav>
           <div className="flex items-center gap-3">
             {searchOpen ? (
