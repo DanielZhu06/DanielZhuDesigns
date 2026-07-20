@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 const projects = [
   {
     title: "AutoGlow",
@@ -27,13 +26,13 @@ const projects = [
   },
 
   {
-    title: "Sports Analytics",
-    text: "Design 4: a sports analytics site.",
+    title: "CourtIntel",
+    text: "An interactive NBA analytics dashboard featuring player trends, league leaders, bilingual support, and responsive data visualizations.",
     image:
-      "https://cdn.dribbble.com/userupload/16724560/file/original-6a71a3b5e7d0c82390584f2dc94f06ef.png",
+      "https://images.unsplash.com/photo-1546519638-68e109498ffc",
+    route: "/courtintel",
   },
 ];
-
 
 function CaseStudies() {
   return (
@@ -47,34 +46,19 @@ function CaseStudies() {
         py-32
       "
     >
-
       <div className="text-center mb-20">
-
-        <h2 className="
-          text-6xl
-          font-bold
-          text-yellow-400
-        ">
+        <h2 className="text-6xl font-bold text-yellow-400">
           Case Studies
         </h2>
-
       </div>
 
-
-      <div className="
-        grid
-        lg:grid-cols-2
-        gap-10
-      ">
-
+      <div className="grid lg:grid-cols-2 gap-10">
         {projects.map((project, index) => (
-
           <Link
             key={index}
             to={project.route || "/coming-soon"}
             className="group cursor-pointer block"
           >
-
             <img
               src={project.image}
               alt={project.title}
@@ -89,30 +73,20 @@ function CaseStudies() {
               "
             />
 
-
             <div className="mt-4">
-
               <h3 className="text-2xl font-semibold">
                 {project.title}
               </h3>
 
-
               <p className="text-gray-400">
                 {project.text}
               </p>
-
             </div>
-
-
           </Link>
-
         ))}
-
       </div>
-
     </section>
   );
 }
-
 
 export default CaseStudies;
